@@ -520,6 +520,48 @@
             }
         }
     </style>
+    <!-- Banner Styles -->
+    <style>
+        .cookies-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 15px 20px;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+            text-align: center;
+        }
+        .cookies-banner a { color: #f39c12; }
+        .cookie-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .cookie-buttons button {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .cookie-buttons button:hover {
+            background: #e67e22;
+        }
+        @media (max-width: 600px) {
+            .cookies-banner { font-size: 13px; }
+            .cookie-buttons { flex-direction: column; }
+            .cookie-buttons button { width: 100%; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -745,6 +787,38 @@
                     typeSelect.value = 'E-commerce Store';
                 }
             });
+        });
+    </script>
+    <div id="cookie-banner" class="cookies-banner" style="display: none;">
+        <p>
+            We use cookies to enhance your experience. See our
+            <a href="https://thecodingbox.github.io/privacy"
+               target="_blank"
+               style="color:#f39c12; text-decoration: underline;">
+                Privacy Policy
+            </a>.
+        </p>
+        <div class="cookie-buttons">
+            <button onclick="handleCookie('accept')">Accept</button>
+            <button onclick="handleCookie('decline')">Decline</button>
+            <button onclick="alert(
+              'We only use essential cookies for form functionality and analytics. No 3rd‑party tracking.'
+            )">
+                Settings
+            </button>
+        </div>
+    </div>
+
+    <!-- Banner Logic -->
+    <script>
+        function handleCookie(choice) {
+            localStorage.setItem('cookieConsent', choice);
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+        window.addEventListener('load', function () {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
         });
     </script>
 </body>

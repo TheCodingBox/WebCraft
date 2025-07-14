@@ -519,6 +519,42 @@
                 font-size: 16px;
             }
         }
+
+        .footer-logo {
+               position: relative;
+               width: 100%;
+               text-align: center;
+               margin-top: 0px;
+               margin-bottom: 60px;
+               z-index: 500;
+               color: #ffffff !important;
+               opacity: 0.8;
+               font-family: 'Courier New', monospace;
+               font-size: 2.2em;
+               pointer-events: none;
+               user-select: none;
+               line-height: 1.2;
+               text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+           }
+           .footer-logo .code-brackets {
+               font-size: 2.5em;
+               font-weight: 300;
+               display: block;
+           }
+
+           .footer-logo .brand-name {
+               font-size: 1em;
+               font-weight: 400;
+               margin-top: 4px;
+           }
+
+           @media (max-width: 768px) {
+               .footer-logo {
+                   font-size: 1.8em;
+                   margin-top: 0px;
+                   margin-bottom: 60px;
+               }
+           }
     </style>
     <!-- Banner Styles -->
     <style>
@@ -821,5 +857,9 @@
             }
         });
     </script>
+<div class="footer-logo">
+    <div class="code-brackets">&lt;/&gt;</div>
+    <div class="brand-name">TheCodingBox</div>
+</div>
 </body>
 </html>
